@@ -1,4 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 * {
     box-sizing: border-box;
     padding: 0px;
+    margin: 0px;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    font-family: Roboto, sans-serif;
+}
+
+/* Styling for general layout */
+.container{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    height: 100vh;
+}
+
+/* Styling for sidebar and sidebar content */
+.sidebar {
+    background-color: #6ee7b7;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 0px 2.6px;
+
+    display: grid;
+    grid-template-rows: auto auto auto 6fr;
+    gap: 50px;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.button, .logo {
+    border: none;
+    background-color: #6ee7b7;
+    height: 3em;
+
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    justify-items:start;
+}
+
+.menu:hover, .button:hover {
+    background-color: #51a784;
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+.button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    justify-self: center;
+    fill: white;
+}
+
+.logo svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    justify-self: center;
+    fill: white;
+}
+
+.logo p {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+/* Styling for Main Content Section */
+
+.dashboard {
+    padding: 10px;
+}
+
+.header {
+    color: black;
 }
