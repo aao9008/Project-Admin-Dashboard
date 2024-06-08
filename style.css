@@ -1,41 +1,71 @@
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+/* Global Styles */
 * {
-    box-sizing: border-box;
-    padding: 0px;
-    margin: 0px;
-    color: white;
-    font-size: large;
-    font-weight: bold;
-    font-family: Roboto, sans-serif;
+    box-sizing: border-box;   
 }
 
-/* Styling for general layout */
-.container{
+/* Root Variables */
+:root {
+    --text-clr: black;
+    --sdbr-svg-fill: white;
+    --main-svg-fill: black;
+
+    --sdbr-clr: #6ee7b7;
+    --sdbr-text-clr: white;
+    --sdbr-btn-hvr-bg: #51a784;
+
+    --btn-text-clr: white;
+    --btn-main-clr: #1992d4;
+
+    --card-left-border: #6ee7b7;
+    --card-box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 8px;
+
+    --bg-clr-prm: #fff;
+    --bg-clr-sec: #e2e8f0;
+    --card-text-clr: #4b5563;
+}
+
+/*==========================Styling for general layout================================= */
+.container {
     display: grid;
     grid-template-columns: 1fr 6fr;
     height: 100vh;
+    font-family: Roboto, sans-serif;
+    font-size: large;
+    font-weight: bold;
 }
 
-/* Styling for sidebar and sidebar content */
+.sidebar *, .dashboard * {
+    color: inherit;
+    font-size: large;
+    font-weight: bold;
+}
+
+/*=========================Styling for sidebar and sidebar content=============================*/
 .sidebar {
-    background-color: #6ee7b7;
+    background-color: var(--sdbr-clr);
+    color: var(--sdbr-text-clr);
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 0px 2.6px;
+    z-index: 10;
 
     display: grid;
     grid-template-rows: auto auto auto 6fr;
-    gap: 50px;
+    gap: 32px;
 }
 
-.menu{
+.menu {
     display: flex;
     flex-direction: column;
 }
 
 .button, .logo {
     border: none;
-    background-color: #6ee7b7;
+    background-color: var(--sdbr-clr);
     height: 3em;
+    padding-left: 2px;
+    padding-right: 15px;
 
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -43,11 +73,15 @@
     justify-items:start;
 }
 
-.menu:hover, .button:hover {
-    background-color: #51a784;
+.button {
+    cursor: pointer;
 }
 
-.button:active {
+.menu:hover, .button:hover {
+    background-color: var(--sdbr-btn-hvr-bg);
+}
+
+.button:active, .action-button:active {
     transform: scale(0.95);
 }
 
@@ -55,14 +89,14 @@
     width: 1.5rem;
     height: 1.5rem;
     justify-self: center;
-    fill: white;
+    fill: var(--sdbr-svg-fill);
 }
 
 .logo svg {
     width: 2.5rem;
     height: 2.5rem;
     justify-self: center;
-    fill: white;
+    fill: var(--sdbr-svg-fill);
 }
 
 .logo p {
@@ -70,12 +104,249 @@
     font-weight: bold;
 }
 
-/* Styling for Main Content Section */
-
+/* ====================Styling for Main Content Section=================================== */
 .dashboard {
-    padding: 10px;
+    display: grid;
+    grid-template-rows: auto 1fr;
 }
 
-.header {
-    color: black;
+/* ====================Styling for the header================================= */
+.header { 
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding-bottom: 10px;
+    padding-left: 24px;
+    padding-right: 100px;
+    z-index: 9;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1.95px 2.6px;
+}
+
+.header-1 svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--main-svg-fill);
+}
+
+/* Styling for all avatar icons */
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.header-1, .header-2  {
+    padding: 14px;
+    padding-bottom: 0px;
+    padding-left: 24px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.searchbar {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 24px;
+}
+
+input[type="search"] {
+    background-color: #e2e8f0;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    width: 80%;
+    min-width: 150px;
+    height: 34px;
+    padding-left: 15px;
+    padding-right: 10px;
+}
+
+input[type="search"]:focus {
+    outline: solid black;
+    outline-width: 1px;
+}
+
+.account-widgets {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    align-items: center;
+    justify-items: end;
+    gap: 28px;
+}
+
+.account-widgets svg, .account-widgets img {
+    cursor: pointer;
+}
+
+/*========================Styling for bottom half of the header==============================*/
+.header-2 {
+    align-items: center;
+    justify-items: start;
+}
+
+.welcome {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 34px;
+    align-items: center;
+}
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    align-self: center;
+    justify-self: end;
+    gap: 24px;
+}
+
+/* Styling for greeting banner and buttons */
+.welcome .avatar {
+    width: 75px;
+    height: 75px;
+}
+
+.greeting h6 {
+    font-size: medium;
+}
+
+.greeting h1 {
+    font-size: x-large;
+}
+
+.action-button {
+    outline: none;
+    border: none;
+    color: var(--btn-text-clr);
+    background-color: var(--btn-main-clr);
+    height: 35px;
+    width: 100px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/*=================Styling for dashboard content=================*/
+.content {
+    background-color: var(--bg-clr-sec);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 30px;
+}
+
+/* Styling for projects window */
+.widgets svg {
+    height: 1.5rem;
+    width: 1.5rem;
+    cursor: pointer;
+}
+
+.content-header {
+    align-self: start;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.projects {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 12px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    align-content: start;
+}
+
+.cards > .card {
+    background-color: var(--bg-clr-prm);
+    text-align: left;
+    height: 250px;
+    border-radius: 10px;
+    border-left: var(--card-left-border) solid;
+    border-width: 10px;
+    box-shadow: var(--card-box-shadow);
+    padding: 15px;
+    padding-top: 45px;
+
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 15px;
+}
+
+.card-content p {
+    text-align: left;
+    padding: 0px;
+    padding-top: 10px;
+    padding-right: 34px;
+    font-weight: normal;
+    color: var(--card-text-clr);
+}
+
+.card .widgets {
+    justify-self: end;
+}
+
+/*===============Styling for Announcements and Trending Cards================= */
+
+/* Container for Announcements and Trending Cards */
+.content-2 {
+    display: grid;
+    gap: 34px; /* Space between announcement and trending sections */
+}
+
+/* Common styling for card headers and texts within content-2 */
+.content-2 .card-header,
+.content-2 .card-text {
+    font-size: 16px;
+    padding: 0; /* Remove default padding */
+}
+
+/* Specific padding for announcements card text */
+.announcements .card-text {
+    padding: 5px 0 15px; /* Top and bottom padding for better spacing */
+}
+
+/* Specific padding for trending card text */
+.trending .card-text {
+    padding-top: 5px; /* Top padding for better spacing */
+}
+
+/* Grid layout for Announcements and Trending sections */
+.announcements,
+.trending {
+    display: grid;
+    grid-template-rows: auto 1fr; /* Automatically sized row followed by flexible row */
+    gap: 12px; /* Space between rows */
+}
+
+/* Common styling for individual announcement and trending cards */
+.announcement-cards,
+.trending-card {
+    background-color: white;
+    box-shadow: var(--card-box-shadow);
+    padding: 30px; /* Padding inside the cards */
+    border-radius: 10px; /* Rounded corners */
+    display: grid;
+    gap: 15px; /* Space between elements inside the cards */
+}
+
+/* Additional spacing inside trending cards */
+.trending-card {
+    gap: 24px; /* Larger space for trending card elements */
+}
+
+/* Layout for individual cards within a trending card */
+.trending-card .card {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Two columns layout */
+    gap: 15px; /* Space between columns */
+    align-items: center; /* Vertically center the items */
+}
+
+/* Divider line between announcement card contents */
+.announcement-cards .card-content:not(:last-child) {
+    border-bottom: 1px solid #4b556355; /* Subtle divider line */
 }
