@@ -11,6 +11,12 @@
     --text-clr: black;
     --sdbr-svg-fill: white;
     --main-svg-fill: black;
+    --search-bg-clr: #e2e8f0;
+
+    --bg-clr-prm: #fff;
+    --bg-clr-sec: #e2e8f0;
+    --card-text-clr: #4b5563;
+    --dark-theme-txt-clr: white;
 
     --sdbr-clr: #6ee7b7;
     --sdbr-text-clr: white;
@@ -21,10 +27,28 @@
 
     --card-left-border: #6ee7b7;
     --card-box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 8px;
+}
+
+:root.light {
+    --text-clr: black;
+    --sdbr-svg-fill: white;
+    --main-svg-fill: black;
+    --search-bg-clr: #e2e8f0;
 
     --bg-clr-prm: #fff;
     --bg-clr-sec: #e2e8f0;
     --card-text-clr: #4b5563;
+}
+
+:root.dark {
+    --text-clr: white;
+    --sdbr-svg-fill: white;
+    --main-svg-fill: white;
+    --search-bg-clr: #1e293b;
+
+    --bg-clr-prm: #0f172a;
+    --bg-clr-sec: #1e293b;
+    --card-text-clr: #c5d9f5;
 }
 
 /*==========================Styling for general layout================================= */
@@ -106,12 +130,19 @@
 
 /* ====================Styling for Main Content Section=================================== */
 .dashboard {
+    color: var(--text-clr);
     display: grid;
     grid-template-rows: auto 1fr;
 }
 
+.dashboard svg {
+    fill: var(--main-svg-fill);
+}
+
 /* ====================Styling for the header================================= */
 .header { 
+    background-color: var(--bg-clr-prm);
+
     display: grid;
     grid-template-rows: 1fr 1fr;
     padding-bottom: 10px;
@@ -135,6 +166,16 @@
     object-fit: cover;
 }
 
+.theme-toggle {
+    padding: 0px;
+    border: none;
+    background-color: var(--bg-clr-prm);
+
+    display: inline-flex; 
+    justify-content: center;
+    align-items: center;
+}
+
 .header-1, .header-2  {
     padding: 14px;
     padding-bottom: 0px;
@@ -151,7 +192,7 @@
 }
 
 input[type="search"] {
-    background-color: #e2e8f0;
+    background-color: var(--search-bg-clr);
     outline: none;
     border: none;
     border-radius: 20px;
@@ -325,7 +366,7 @@ input[type="search"]:focus {
 /* Common styling for individual announcement and trending cards */
 .announcement-cards,
 .trending-card {
-    background-color: white;
+    background-color: var(--bg-clr-prm);
     box-shadow: var(--card-box-shadow);
     padding: 30px; /* Padding inside the cards */
     border-radius: 10px; /* Rounded corners */
